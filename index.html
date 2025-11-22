@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div id="wrapper">
+    <header class="flag__birthday">
+      <img src="images/1.png" alt="flag left" class="flag__left">
+      <img src="images/1.png" alt="flag right" class="flag__right">
+    </header>
+
+    <main class="content">
+      <section class="left">
+        <div class="title">
+          <h1 class="happy">Happy</h1>
+          <h1 class="birthday">Birthday</h1>
+          <div class="hat"><img src="images/hat.png" alt="hat"></div>
+        </div>
+
+        <div class="date__of__birth"><span></span></div>
+
+        <div class="btn">
+          <button id="btn__letter">Click Here Didi <i class="fa-regular fa-envelope"></i></button>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="box__account">
+          <div class="image"><img src="images/unnamed.png" alt="profile"></div>
+          <div class="name"><i class="fa-solid fa-heart"></i> <span>Dear Megha Dii</span> <i class="fa-solid fa-heart"></i></div>
+
+          <div class="balloon_one"><img src="images/balloon1.png" alt="balloon 1"></div>
+          <div class="balloon_two"><img src="images/balloon2.png" alt="balloon 2"></div>
+        </div>
+
+        <div class="cricle">
+          <div class="text__cricle">happy-birthday-</div>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal with flip card -->
+    <div class="boxMail" id="mailModal" aria-hidden="true">
+      <div class="boxMail-container" id="cardContainer">
+        <div class="card front">
+          <div class="front-inner">
+            <div class="userImg"><img src="images/unnamed.png" alt="user"></div>
+            <h3 class="username">To: didi 💖</h3>
+            <h4>Happy Birthday</h4>
+            <div class="imageCute"><img src="images/cute1.png" alt="cute1"></div>
+          </div>
+        </div>
+
+        <div class="card back">
+          <div class="card2-content">
+            <h3>To You!</h3>
+            <h2 class="message">“Happy Birthday didi! 🎉 hope you have the best day and enjoy everything (its my unique way to wish i hope you like it)”</h2>
+            <div class="imageCute2"><img src="images/cute2.png" alt="cute2"></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="close" id="closeBtn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+
+<script>
+// Small JS to control modal and flip
+const btn = document.getElementById('btn__letter');
+const modal = document.getElementById('mailModal');
+const container = document.getElementById('cardContainer');
+const closeBtn = document.getElementById('closeBtn');
+
+btn.addEventListener('click', () => {
+  modal.classList.add('active');
+  // flip after a short delay for a nice effect
+  setTimeout(() => container.classList.add('flipped'), 200);
+  modal.setAttribute('aria-hidden', 'false');
+});
+
+closeBtn.addEventListener('click', () => {
+  container.classList.remove('flipped');
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+});
+</script>
+
+</body>
+</html>

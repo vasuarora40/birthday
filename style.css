@@ -1,0 +1,90 @@
+/* Clean, minimal CSS rebuilt for reliable flip + responsive layout */
+
+:root{
+  --pink: #FF7882;
+  --bg: #feecea;
+  --black: #222;
+  --white: #fff;
+  --card-w: 750px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Dancing Script", cursive;
+  background: linear-gradient(var(--bg),var(--bg));
+  color:var(--black);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:24px;
+}
+
+/* Layout */
+#wrapper{max-width:1100px;margin:0 auto;position:relative}
+.flag__birthday{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.flag__birthday img{width:280px;opacity:0.95}
+.content{display:flex;gap:20px;align-items:flex-start}
+.left{flex:0 0 40%;display:flex;flex-direction:column;align-items:center;gap:16px}
+.right{flex:1;position:relative}
+
+/* Title */
+.title .happy{font-size:48px;letter-spacing:2px}
+.title .birthday{font-size:56px;color:var(--pink);font-weight:700}
+.hat img{width:120px}
+
+/* Profile card */
+.box__account{position:relative;padding:12px}
+.image{width:300px;height:300px;border-radius:50%;overflow:hidden;border:6px solid var(--black)}
+.image img{width:100%;height:100%;object-fit:cover}
+.name{margin-top:12px;padding:8px 14px;background:var(--pink);color:white;border-radius:30px;display:inline-flex;gap:8px;align-items:center;font-weight:700}
+
+/* Balloons */
+.balloon_one,.balloon_two{position:absolute;pointer-events:none}
+.balloon_one{top:-40px;left:-40px}
+.balloon_two{top:120px;right:-60px}
+
+/* Modal & Flip container */
+.boxMail{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);visibility:hidden;opacity:0;transform:scale(0.95);transition:all .25s ease;z-index:9999}
+.boxMail.active{visibility:visible;opacity:1;transform:scale(1)}
+
+/* perspective container */
+.boxMail-container{
+  width:var(--card-w);height:480px;position:relative;
+  perspective:2000px;
+  transform-style:preserve-3d;
+}
+
+/* card common */
+.card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50%;height:100%;backface-visibility:hidden;transform-style:preserve-3d;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+.card.front{left:25%;background:linear-gradient(90deg,var(--pink),#ffb0b0);color:white;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:18px;transform:translate(-50%,-50%) rotateY(0deg)}
+.card.back{left:75%;background:linear-gradient(90deg,#fff,#f6f6f6);color:#333;padding:20px;transform:translate(-50%,-50%) rotateY(180deg)}
+
+/* flipped state */
+.boxMail-container.flipped .card.front{transform:translate(-50%,-50%) rotateY(-180deg)}
+.boxMail-container.flipped .card.back{transform:translate(-50%,-50%) rotateY(0deg)}
+
+/* inner content */
+.front-inner{display:flex;flex-direction:column;align-items:center;gap:10px}
+.userImg{width:90px;height:90px;border-radius:50%;overflow:hidden;border:3px solid white}
+.userImg img{width:100%;height:100%;object-fit:cover}
+.username{font-size:22px;margin-top:6px}
+.imageCute img{width:48px;height:48px}
+
+/* back content */
+.card2-content h3{font-size:28px;margin-bottom:6px}
+.card2-content .message{font-size:20px;line-height:1.4;margin:12px 0}
+.imageCute2 img{width:56px;height:56px;display:block;}
+
+/* close button */
+.close{position:fixed;top:18px;right:18px;background:transparent;border:none;color:white;font-size:28px;cursor:pointer;display:none}
+.boxMail.active .close{display:block}
+
+/* Responsive */
+@media (max-width:900px){
+  .content{flex-direction:column;align-items:center}
+  .image{width:200px;height:200px}
+  .boxMail-container{width:90vw;height:380px}
+  .card{width:60%}
+  .card.front{left:40%}
+  .card.back{left:60%}
+}
